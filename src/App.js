@@ -9,6 +9,7 @@ import {RememberContext} from './Context/RememberContext'
 // Composants
 import LoggedIn from './Components/Login/Loggedin';
 import Login from './Components/Login'
+import NotFound from './Components/NotFound';
 
 function App() {
 
@@ -27,6 +28,8 @@ function App() {
           <Route exact path='/loggedin'>
             <LoggedIn />
           </Route>
+          {/* Fallback - gestion de 404 */}
+          <Route component={NotFound} />
         </Switch>          
         </RememberContext.Provider>
       </UserContext.Provider>
