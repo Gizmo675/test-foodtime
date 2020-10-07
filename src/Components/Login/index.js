@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {Grid, Image, Button, Input, Form, Checkbox, Divider} from 'semantic-ui-react'
+import { Image, Button, Input, Form, Checkbox, Divider} from 'semantic-ui-react'
 import {Link, useHistory} from 'react-router-dom'
 import UserContext from '../../Context/UserContext'
 
@@ -46,48 +46,45 @@ function Login() {
   }
 
 return (
-  <Grid textAlign='center' verticalAlign='middle' >
-    <Grid.Column width={6}>
-      <div id='logo'>
-        <Image src={Foodtime} alt='foodtime' />
-      </div>
-    </Grid.Column>
-    <Grid.Column width={6}>
-    <div id='login'>
-    <h4>Connexion</h4>
-    <Form onSubmit={()=>handleSubmit()}>
-      <Form.Field>
-        <Input
-          placeholder='Email'
-          type="email"
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />            
-      </Form.Field>
-      <Form.Field>
-        <Input 
-          placeholder='Mot de passe' 
-          type="password"
-          value={password}
-          required
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </Form.Field>
-      <Form.Field>
-        <Checkbox label='Rester connecté' />
-      </Form.Field>
-      <Button 
-        type='submit'
-        primary
-        onClick={()=>console.log(email, password)}
-      >Se connecter</Button>
-    </Form>
-    <Divider />
-    <Link to='/forgot-password'>Mot de passe oublié ?</Link>
+  <div className='login'>
+      <Image src={Foodtime} alt='foodtime' />
+      <div className='login-form'>
+      <h4>Connexion</h4>
+      <Form onSubmit={()=>handleSubmit()}>
+        <Form.Field>
+          <Input
+            className='login-input'
+            placeholder='Email'
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />            
+        </Form.Field>
+        <Form.Field>
+          <Input
+            className='login-input'
+            placeholder='Mot de passe' 
+            type="password"
+            value={password}
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </Form.Field>
+        <Form.Field>
+          <Checkbox label='Rester connecté' />
+        </Form.Field>
+        <Button 
+          type='submit'
+          primary
+          onClick={()=>console.log(email, password)}
+        >Se connecter</Button>
+      </Form>
+      <Divider />
+      <Link to='/forgot-password'>Mot de passe oublié ?</Link>
+    </div>
   </div>
-    </Grid.Column>
-  </Grid>
+
 )
 
 } 
