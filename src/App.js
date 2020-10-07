@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.css';
-import LoggedIn from './Components/LoggedIn';
 
 // Context
 import {UserContext} from './Context/UserContext'
 import {RememberContext} from './Context/RememberContext'
 
 // Composants
+import LoggedIn from './Components/Login/Loggedin';
 import Login from './Components/Login'
 
 function App() {
