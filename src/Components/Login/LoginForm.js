@@ -84,7 +84,7 @@ function LoginForm() {
       >Se connecter</Button>
     </Form>
     <Divider />
-    <Link onClick={()=>setRemember(false)}>Mot de passe oublié ?</Link>
+    <Link to='' onClick={()=>setRemember(false)}>Mot de passe oublié ?</Link>
 </div>
   )
 }
