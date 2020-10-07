@@ -1,23 +1,37 @@
 import React from 'react';
-import {Button, Input, Grid, Radio} from 'semantic-ui-react'
+import {Grid, Image, Button, Input, Form, Checkbox} from 'semantic-ui-react'
+import {Link} from 'react-router-dom'
+
 import Foodtime from '../../assets/img/foodtime-mockup.jpg'
+import './login.css'
+
 function Login() {
 
 return (
-  <Grid>
-    <Grid.Column>
+  <Grid textAlign='center' verticalAlign='middle' >
+    <Grid.Column width={6}>
       <div id='logo'>
-        <img src={Foodtime} alt='foodtime' />
+        <Image src={Foodtime} alt='foodtime' />
       </div>
-      <div id='login'>
-        <h1>Connexion</h1>
-        <Input placeholder='Email' type="email"/>
+    </Grid.Column>
+    <Grid.Column width={6}>
+    <div id='login'>
+    <h4>Connexion</h4>
+    <Form>
+      <Form.Field>
+        <Input placeholder='Email' type="email"/>            
+      </Form.Field>
+      <Form.Field>
         <Input placeholder='Mot de passe' type="password"/>
-        <Radio label='Rester connecté' />
-        <Button primary >Se connecter</Button>
-        <hr />
-        <h3>Mot de passe oublié ?</h3>
-      </div>
+      </Form.Field>
+      <Form.Field>
+        <Checkbox label='Rester connecté' />
+      </Form.Field>
+      <Button type='submit' primary >Se connecter</Button>
+    </Form>
+    <hr />
+    <Link to='/forgot-password'>Mot de passe oublié ?</Link>
+  </div>
     </Grid.Column>
   </Grid>
 )
