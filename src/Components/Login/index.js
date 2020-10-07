@@ -2,9 +2,12 @@ import React, {useState, useContext} from 'react';
 import { Image, Button, Input, Form, Checkbox, Divider} from 'semantic-ui-react'
 import {Link, useHistory} from 'react-router-dom'
 import UserContext from '../../Context/UserContext'
+import {toast} from 'react-toastify'
 
 import Foodtime from '../../assets/img/foodtime-mockup.jpg'
 import './login.css'
+
+toast.configure()
 
 function Login() {
 
@@ -12,6 +15,10 @@ function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const {setCurrentUser} = useContext(UserContext)
+
+  const Error=()=>{
+    return toast.error('Couple identifiant / mot de passe invalide')
+  }
 
   const handleSubmit= () => {
     if(
@@ -41,7 +48,7 @@ function Login() {
           login:'Yannick63'
         })
        } else {
-        console.error("erreur connexion");
+        Error()
       }
   }
 
