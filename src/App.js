@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.css';
+import LoggedIn from './Components/LoggedIn';
 
 // Composants
 import Login from './Components/Login'
@@ -16,6 +17,9 @@ function App() {
           </Route>
           <Route exact path='/forgot-password'>
             <ResetPassword />
+          </Route>
+          <Route exact path='/loggedin'>
+            <LoggedIn />
           </Route>
         </Switch>
       </BrowserRouter>

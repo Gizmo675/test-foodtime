@@ -1,12 +1,11 @@
 import React from 'react';
-import {Button, Input, Form, Image, Grid} from 'semantic-ui-react'
+import {Button, Input, Form, Image, Grid, Divider} from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 
 import Foodtime from '../../assets/img/foodtime-mockup.jpg'
 
 function ResetPassword() {
   return(
-
     <Grid textAlign='center' verticalAlign='middle' >
     <Grid.Column width={6}>
       <div id='logo'>
@@ -25,13 +24,11 @@ function ResetPassword() {
             <Button type='submit' primary>Ré-initialiser</Button>
           </Form.Field>
         </Form>
-        <hr />
+        <Divider />
         <Link to='/'>Vous l'avez retrouvé ? connecté vous</Link>
       </div>
     </Grid.Column>
   </Grid>
-
-
   )
 }
 
