@@ -1,95 +1,24 @@
-import React, {useState, useContext} from 'react';
-import { Image, Button, Input, Form, Checkbox, Divider} from 'semantic-ui-react'
-import {Link, useHistory} from 'react-router-dom'
-import UserContext from '../../Context/UserContext'
-import {toast} from 'react-toastify'
+import React, { useContext } from 'react';
+import { Image} from 'semantic-ui-react'
 
 import Foodtime from '../../assets/img/foodtime-mockup.jpg'
+import RememberContext from '../../Context/RememberContext';
+import ResetPassword from '../ResetPassword';
 import './login.css'
-
-toast.configure()
+import LoginForm from './LoginForm';
 
 function Login() {
 
-  const history = useHistory()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const {setCurrentUser} = useContext(UserContext)
-
-  const Error=()=>{
-    return toast.error('Couple identifiant / mot de passe invalide')
-  }
-
-  const handleSubmit= () => {
-    if(
-      email === 'damien.giron@arke.com' || password === '123AZERTY456'
-      ){
-      setCurrentUser({
-        email,
-        password,
-        login:'Damien.G'
-      })
-      history.push('/loggedin')
-    } else if(
-      // eslint-disable-next-line no-useless-escape
-      email === 'renaudbiemans@gmail.com' || password === "password/\ùnbr€àkable"
-      ){
-        setCurrentUser({
-          email,
-          password,
-          login:'renaudbie'
-        })
-       } else if(
-      email === 'Manfrya@Gmail.Com' || password === '**ilovemoman**'
-       ){
-        setCurrentUser({
-          email,
-          password,
-          login:'Yannick63'
-        })
-       } else {
-        Error()
-      }
-  }
+  const {remember} = useContext(RememberContext)
 
 return (
   <div className='login'>
       <Image src={Foodtime} alt='foodtime' />
-      <div className='login-form'>
-      <h4>Connexion</h4>
-      <Form onSubmit={()=>handleSubmit()}>
-        <Form.Field>
-          <Input
-            className='login-input'
-            placeholder='Email'
-            type="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />            
-        </Form.Field>
-        <Form.Field>
-          <Input
-            className='login-input'
-            placeholder='Mot de passe' 
-            type="password"
-            value={password}
-            required
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </Form.Field>
-        <Form.Field>
-          <Checkbox label='Rester connecté' />
-        </Form.Field>
-        <Button 
-          type='submit'
-          primary
-          onClick={()=>console.log(email, password)}
-        >Se connecter</Button>
-      </Form>
-      <Divider />
-      <Link to='/forgot-password'>Mot de passe oublié ?</Link>
-    </div>
+      {remember ?
+      <LoginForm />
+      :
+      <ResetPassword />
+      }
   </div>
 
 )

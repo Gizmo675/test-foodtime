@@ -5,30 +5,30 @@ import LoggedIn from './Components/LoggedIn';
 
 // Context
 import {UserContext} from './Context/UserContext'
+import {RememberContext} from './Context/RememberContext'
 
 // Composants
 import Login from './Components/Login'
-import ResetPassword from './Components/ResetPassword';
 
 function App() {
 
   const [currentUser, setCurrentUser] = useState()
+  const [remember, setRemember] = useState(true)
 
   return (
     <div className="App">
       <BrowserRouter>
       <UserContext.Provider value={{currentUser, setCurrentUser}}>
+        <RememberContext.Provider value={{remember, setRemember}}>
         <Switch>
           <Route exact path='/'>
             <Login />
           </Route>
-          <Route exact path='/forgot-password'>
-            <ResetPassword />
-          </Route>
           <Route exact path='/loggedin'>
             <LoggedIn />
           </Route>
-        </Switch>
+        </Switch>          
+        </RememberContext.Provider>
       </UserContext.Provider>
       </BrowserRouter>
     </div>
