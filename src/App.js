@@ -1,16 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.css';
 import LoggedIn from './Components/LoggedIn';
+
+// Context
+import {UserContext} from './Context/UserContext'
 
 // Composants
 import Login from './Components/Login'
 import ResetPassword from './Components/ResetPassword';
 
 function App() {
+
+  const [currentUser, setCurrentUser] = useState()
+
   return (
     <div className="App">
       <BrowserRouter>
+      <UserContext.Provider value={{currentUser, setCurrentUser}}>
         <Switch>
           <Route exact path='/'>
             <Login />
@@ -22,6 +29,7 @@ function App() {
             <LoggedIn />
           </Route>
         </Switch>
+      </UserContext.Provider>
       </BrowserRouter>
     </div>
   );
